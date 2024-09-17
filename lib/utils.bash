@@ -61,13 +61,20 @@ install_version() {
     		swift build --configuration release --arch arm64 --arch x86_64
 
     		if [ ! -d bin ]; then
-      		  mkdir bin >/dev/null 2>&1
+      		  mkdir bin
     		fi
     		cp -f "$TOOL_BUILDPATH" "bin/$TOOL_NAME"
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-		test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
+
+                if [ -e "$install_path/$tool_cmd" ]; then
+    		  echo "File $install_path/$tool_cmd exists."
+                else
+                  echo "File $install_path/$tool_cmd does not exist."
+                fi
+		
+                test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
 
 		echo "$TOOL_NAME $version installation was successful!"
 	) || (
