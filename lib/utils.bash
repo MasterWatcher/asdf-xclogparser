@@ -60,10 +60,7 @@ install_version() {
 
     		swift build --configuration release --arch arm64 --arch x86_64
 
-    		if [ ! -d bin ]; then
-      		  mkdir bin
-    		fi
-    		cp -f "$TOOL_BUILDPATH" "bin/$TOOL_NAME"
+    		cp -f "$TOOL_BUILDPATH" "$install_path"
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
