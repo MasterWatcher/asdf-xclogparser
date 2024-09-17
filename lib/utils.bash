@@ -64,13 +64,6 @@ install_version() {
 
 		local tool_cmd
 		tool_cmd="$(echo "$TOOL_TEST" | cut -d' ' -f1)"
-
-                if [ -e "$TOOL_BUILDPATH" ]; then
-    		  echo "File $TOOL_BUILDPATH exists."
-                else
-                  echo "File $TOOL_BUILDPATH does not exist."
-                fi
-		
                 test -x "$install_path/$tool_cmd" || fail "Expected $install_path/$tool_cmd to be executable."
 
 		echo "$TOOL_NAME $version installation was successful!"
