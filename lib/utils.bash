@@ -4,7 +4,7 @@ set -euo pipefail
 
 GH_REPO="https://github.com/MasterWatcher/xclogparser"
 TOOL_NAME="xclogparser"
-TOOL_TEST="--help"
+TOOL_TEST="xclogparser --help"
 TOOL_BUILDPATH=".build/apple/Products/Release/${TOOL_NAME}"
 
 fail() {
